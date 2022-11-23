@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://shop.elhellal.com/"
 languageCode = "en-us"
 title = "tweets shop"
 theme = "tweets-shop"
