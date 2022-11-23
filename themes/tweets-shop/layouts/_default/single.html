@@ -1,8 +1,32 @@
 {{ define "main" }}
+{{ $shirt_img := .Resources.GetMatch "twitter_card_image.webp" }}
+{{ with .Parent }}
+{{ $b := .Resources.GetMatch "b.png" }}
+{{ $w := .Resources.GetMatch "w.png" }}
+{{ $type := index (split .RelPermalink "/") 4 }}
 
 
-<div>
-page
-</div>
+{{ with $w }}
+{{ if eq $type "w_tshirt" }}
+<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113562383382757001&max_dim=1024&at=238414036962221940&t_image1_url={{ $w.Permalink }}" alt="{{ .Description }}">
+{{ end }}
 
+{{ if eq $type "w_sshirt" }}
+<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113758459795474410&max_dim=1028&at=238414036962221940&t_image1_url={{ $w.Permalink }}" alt="{{ .Description }}">
+{{ end }}
+{{ end }}
+
+
+{{ with $b }}
+{{ if eq $type "b_tshirt" }}
+<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113562383382757001&style=hanes_mens_crew_darktshirt_5250&size=a_s&color=black&max_dim=1028&at=238414036962221940&t_image1_url={{ $b.Permalink }}" alt="{{ .Description }}">
+{{ end }}
+
+{{ if eq $type "b_sshirt" }}
+<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113758459795474410&style=truemade_mens_crew_sweatshirt_z260&size=a_s&color=black&max_dim=1028&at=238414036962221940&t_image1_url={{ $b.Permalink }}" alt="{{ .Description }}">
+{{ end }}
+{{ end }}
+
+
+{{ end }}
 {{ end }}
