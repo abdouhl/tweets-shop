@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{ $type := index (split .RelPermalink "/") 4 }}
-
+{{ $url := "" }}
 {{ with .Parent }}
 {{ $b := .Resources.GetMatch "b.png" }}
 {{ $w := .Resources.GetMatch "w.png" }}
@@ -12,10 +12,12 @@
 {{ with $w }}
 {{ $ww := urlquery $w.Permalink | safeURL }}
 	{{ if eq $type "w_tshirt" }}
+	{{ $url = print "https://www.zazzle.com/api/create/at-238414036962221940?rf=238414036962221940&ax=Linkover&pd=235293855806478511&ed=true&tc=&ic=&t_image1_iid=" $ww }}
 	<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113562383382757001&max_dim=1024&at=238414036962221940&t_image1_url={{ $ww }}" >
 	{{ end }}
 
 	{{ if eq $type "w_sshirt" }}
+	{{ $url = print "https://www.zazzle.com/api/create/at-238414036962221940?rf=238414036962221940&ax=Linkover&pd=235870585213574671&ed=true&tc=&ic=&t_image1_iid=" $ww }}
 	<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113758459795474410&max_dim=1028&at=238414036962221940&t_image1_url={{ $ww }}" >
 	{{ end }}
 {{ end }}
@@ -24,14 +26,37 @@
 {{ with $b }}
 {{ $bb := urlquery $b.Permalink | safeURL }}
 	{{ if eq $type "b_tshirt" }}
+	{{ $url = print "https://www.zazzle.com/api/create/at-238414036962221940?rf=238414036962221940&ax=Linkover&pd=235081497385425037&ed=true&tc=&ic=&t_image2_iid=" $bb }}
 	<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113562383382757001&style=hanes_mens_crew_darktshirt_5250&size=a_s&color=black&max_dim=1028&at=238414036962221940&t_image1_url={{ $bb }}" >
 	{{ end }}
 
 	{{ if eq $type "b_sshirt" }}
+	{{ $url = print "https://www.zazzle.com/api/create/at-238414036962221940?rf=238414036962221940&ax=Linkover&pd=235706930408917412&ed=true&tc=&ic=&t_image2_iid=" $bb }}
 	<img style="width: 90vw;height: 90vh;object-fit: contain;" src="https://rlv.zazzle.com/svc/view?pid=235293855806478511&realview=113758459795474410&style=truemade_mens_crew_sweatshirt_z260&size=a_s&color=black&max_dim=1028&at=238414036962221940&t_image1_url={{ $bb }}" >
 	{{ end }}
 {{ end }}
 
 
 {{ end }}
+
+
+
+
+
+<script>
+
+ setTimeout(myURL, 1000);
+
+
+function myURL() {
+ document.location.href = "{{ $url }}";
+}
+</script>
+   
+   
+
+
+
+
+
 {{ end }}
